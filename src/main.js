@@ -146,10 +146,10 @@ document.addEventListener("DOMContentLoaded", () => {
               <img src="${image.webformatURL}" alt="${image.tags}" class="image-thumbnail">
             </a>
             <div class="image-details">
-              <p><b>💗Likes:</b> ${image.likes}</p>
-              <p><b>👁️Views:</b> ${image.views}</p>
-              <p><b>💬Comments:</b> ${image.comments}</p>
-              <p><b>💌Downloads:</b> ${image.downloads}</p>
+              <p><b>Likes:</b> ${image.likes}</p>
+              <p><b>Views:</b> ${image.views}</p>
+              <p><b>Comments:</b> ${image.comments}</p>
+              <p><b>Downloads:</b> ${image.downloads}</p>
             </div>
           </div>
         `
