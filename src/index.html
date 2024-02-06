@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./css/searchimg.css" />
+    <title>Image Search App</title>
+  </head>
+
+  <body>
+    <div class="app">
+      <form class="searchForm">
+        <label for="searchInput"></label>
+        <input
+          type="text"
+          id="searchInput"
+          class="searchInput"
+          placeholder="Search images"
+        />
+        <button type="submit" class="button">Search</button>
+      </form>
+      <div class="gallery"></div>
+      <div class="loader-container">
+        <div class="loader hidden">Loading images, wait please...</div>
+      </div>
+      <button class="load-more-button hidden">
+        Load more
+        <div class="loader-container">
+          <div class="loader hidden">Loading images, wait please...</div>
+        </div>
+      </button>
+    </div>
+
+    <script src="./main.js" type="module"></script>
+  </body>
+</html>
