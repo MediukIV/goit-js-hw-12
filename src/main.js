@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loadButton.classList.add("hidden");
         iziToast.info({
           title: "End of Collection",
-          position: "topRight",
+          position: "center",
           message: "We're sorry, but you've reached the end of search results.",
         });
       } else {
