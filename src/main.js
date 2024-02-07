@@ -31,12 +31,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Поточна сторінка для пагінації
   let currentPage = 1;
 
+  // Масив для збереження данних введених в Imput форми
+  let arr = [];
+
   // Обробник події для форми пошуку
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    // Отримання терміну пошуку
+    // Отримання терміну пошуку та пушимо в масив
     const searchTerm = searchInput.value.trim();
+    arr.push(searchTerm);
 
     if (searchTerm === "") {
       // Виведення помилки, якщо термін пошуку порожній
@@ -69,6 +73,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // Приховати лоадер після завершення операції
       loader.classList.add("hidden");
     }
+
+    // Очищаємо Imput форми
+    form.reset();
   });
 
   // Обробник події для кнопки "Load More"
@@ -78,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadButton.classList.add("hidden");
     // Збільшити поточну сторінку та отримати додаткові дані
     currentPage++;
-    fetchData(searchInput.value.trim(), currentPage);
+    fetchData(arr, currentPage);
   });
 
   // Функція для отримання та відображення даних
@@ -134,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Приховати лоадер після завершення операції
       loader.classList.add("hidden");
     }
+
   }
 
   // Функція для відображення зображень на сторінці
@@ -165,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Прокрутити сторінку так, щоб користувач міг побачити нові зображення
     const cardHeight = document.querySelector('.gallery-item')?.getBoundingClientRect().height;
     if (cardHeight) {
-      smoothScrollBy(cardHeight * images.length, 300);
+      smoothScrollBy(cardHeight * images.length, 5500);
     }
   }
 
