@@ -40,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Отримання терміну пошуку та пушимо в масив
     const searchTerm = searchInput.value.trim();
+    arr = [];
     arr.push(searchTerm);
 
     if (searchTerm === "") {
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loader.classList.remove("hidden");
     gallery.innerHTML = "";
     loadButton.classList.add("hidden");
+    currentPage = 1;
 
     try {
       // Отримання та відображення даних
@@ -89,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Функція для отримання та відображення даних
-  async function fetchData(searchTerm, page) {
+  async function fetchData(searchTerm, page = 1) {
     try {
       // Отримання даних з API Pixabay
       const response = await axios.get(`${apiUrl}?key=${apiKey}&q=${searchTerm}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${PER_PAGE}`);
@@ -135,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       iziToast.error({
         title: "Error",
         position: "topRight",
-        message: "An error occurred while fetching data. Please try again.",
+        message: "Sorry, there are no images matching your search query. Please try again!",
       });
     } finally {
       // Приховати лоадер після завершення операції
