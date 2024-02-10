@@ -10,5 +10,5 @@ import{S as q,i as f,a as C}from"./assets/vendor-b52d9f5e.js";(function(){const 
               <p><b>Downloads:</b> ${t.downloads}</p>
             </div>
           </div>
-        `).join("");d.innerHTML+=r,w.refresh();const s=(a=document.querySelector(".gallery-item"))==null?void 0:a.getBoundingClientRect().height;s&&E(s*i.length,5500)}function E(i,r){const s=window.scrollY;let a=null;function t(g){a||(a=g);const n=g-a,S=Math.min(n,r),R=u=>u<.5?2*u*u:-1+(4-2*u)*u;window.scrollTo(0,s+R(S/r)*i),n<r&&requestAnimationFrame(t)}requestAnimationFrame(t)}});
+        `).join("");d.innerHTML+=r,w.refresh();const s=(a=document.querySelector(".gallery-item"))==null?void 0:a.getBoundingClientRect().height;s&&E(s*i.length,17500)}function E(i,r){const s=window.scrollY;let a=null;function t(g){a||(a=g);const n=g-a,S=Math.min(n,r),R=u=>u<.5?2*u*u:-1+(4-2*u)*u;window.scrollTo(0,s+R(S/r)*i),n<r&&requestAnimationFrame(t)}requestAnimationFrame(t)}});
 //# sourceMappingURL=commonHelpers.js.map
