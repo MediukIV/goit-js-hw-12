@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Прокрутити сторінку так, щоб користувач міг побачити нові зображення
     const cardHeight = document.querySelector('.gallery-item')?.getBoundingClientRect().height;
     if (cardHeight) {
-      smoothScrollBy(cardHeight * images.length, 5500);
+      smoothScrollBy(cardHeight * images.length, 17500);
     }
   }
 
