@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const apiUrl = "https://pixabay.com/api/";
 
   // Кількість зображень на сторінці
-  const PER_PAGE = 40;
+  const PER_PAGE = 39;
 
   // Ініціалізація lightbox для перегляду зображень
   const lightbox = new SimpleLightbox('.gallery a', {
@@ -94,20 +94,17 @@ document.addEventListener("DOMContentLoaded", () => {
   async function fetchData(searchTerm, page = 1) {
     try {
       // Отримання даних з API Pixabay
-      const response = await axios.get(`${apiUrl}?key=${apiKey}&q=${searchTerm}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${PER_PAGE}`);
-      
-    //     const response = await axios.get(`${apiUrl}`, {
-    //     params: {
-    //     key: apiKey,
-    //     q: searchTerm,
-    //     image_type: 'photo',
-    //     orientation: 'horizontal',
-    //     safesearch: true,
-    //     page: page,
-    //     per_page: PER_PAGE,
-    //   },
-    // });
-         
+      const params = new URLSearchParams({
+        key: apiKey,
+        q: searchTerm,
+        image_type: 'photo',
+        orientation: 'horizontal',
+        safesearch: true,
+        page: page,
+        per_page: PER_PAGE,
+      });
+      const response = await axios.get(`${apiUrl}?${params}`);
+            
       if (response.status !== 200) {
         // Якщо отримано неочікуваний HTTP-відповідь, вивести помилку
         throw new Error(`HTTP error! Status: ${response.status}`);
