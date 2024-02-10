@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const apiUrl = "https://pixabay.com/api/";
 
   // Кількість зображень на сторінці
-  const PER_PAGE = 15;
+  const PER_PAGE = 40;
 
   // Ініціалізація lightbox для перегляду зображень
   const lightbox = new SimpleLightbox('.gallery a', {
@@ -95,7 +95,19 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       // Отримання даних з API Pixabay
       const response = await axios.get(`${apiUrl}?key=${apiKey}&q=${searchTerm}&image_type=photo&orientation=horizontal&safesearch=true&page=${page}&per_page=${PER_PAGE}`);
-
+      
+    //     const response = await axios.get(`${apiUrl}`, {
+    //     params: {
+    //     key: apiKey,
+    //     q: searchTerm,
+    //     image_type: 'photo',
+    //     orientation: 'horizontal',
+    //     safesearch: true,
+    //     page: page,
+    //     per_page: PER_PAGE,
+    //   },
+    // });
+         
       if (response.status !== 200) {
         // Якщо отримано неочікуваний HTTP-відповідь, вивести помилку
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -106,10 +118,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (data.hits.length === 0) {
         // Якщо немає зображень, приховати кнопку "Load More" та вивести інформаційне повідомлення
         loadButton.classList.add("hidden");
-        iziToast.info({
-          title: "End of Collection",
-          position: "center",
+        iziToast.show({
+          title: 'End of Collection',
+          messageColor: '#fff',
+          messageSize: '20px',
+          backgroundColor: '#EF4040',
           message: "We're sorry, but you've reached the end of search results.",
+          position: 'bottomCenter',
         });
       } else {
         // Якщо є зображення, відобразити їх та показати/приховати кнопку "Load More"
@@ -129,6 +144,14 @@ document.addEventListener("DOMContentLoaded", () => {
           loadButton.classList.remove("hidden");
         } else {
           loadButton.classList.add("hidden");
+          iziToast.show({
+          title: 'End of Collection',
+          messageColor: '#fff',
+          messageSize: '20px',
+          backgroundColor: '#EF4040',
+          message: "We're sorry, but you've reached the end of search results.",
+          position: 'bottomCenter',
+        });
         }
       }
     } catch (error) {
