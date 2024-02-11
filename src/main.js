@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const apiUrl = "https://pixabay.com/api/";
 
   // Кількість зображень на сторінці
-  const PER_PAGE = 39;
+  const PER_PAGE = 15;
 
   // Ініціалізація lightbox для перегляду зображень
   const lightbox = new SimpleLightbox('.gallery a', {
@@ -47,6 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
       // Виведення помилки, якщо термін пошуку порожній
       iziToast.error({
         title: "Error",
+        messageColor: '#fff',
+        messageSize: '20px',
+        backgroundColor: '#EF4040',
         position: "topRight",
         message: "Please enter a search term.",
       });
@@ -65,9 +68,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     } catch (error) {
       // Обробка помилок під час отримання даних
-      console.error("Error fetching data:", error);
+      console.error(error);
       iziToast.error({
         title: "Error",
+        messageColor: '#fff',
+        messageSize: '20px',
+        backgroundColor: '#EF4040',
         position: "topRight",
         message: "An error occurred while fetching data. Please try again.",
       });
@@ -116,12 +122,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Якщо немає зображень, приховати кнопку "Load More" та вивести інформаційне повідомлення
         loadButton.classList.add("hidden");
         iziToast.show({
-          title: 'End of Collection',
+          title: '',
           messageColor: '#fff',
           messageSize: '20px',
           backgroundColor: '#EF4040',
-          message: "We're sorry, but you've reached the end of search results.",
-          position: 'bottomCenter',
+          message: "Sorry, there are no images matching your search query. Please try again!",
+          position: 'topRight',
         });
       } else {
         // Якщо є зображення, відобразити їх та показати/приховати кнопку "Load More"
@@ -153,9 +159,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } catch (error) {
       // Обробка помилок, які можуть виникнути під час отримання даних
-      console.error("Error fetching data:", error);
+      console.error(error);
       iziToast.error({
         title: "Error",
+        messageColor: '#fff',
+        messageSize: '20px',
+        backgroundColor: '#EF4040',
         position: "topRight",
         message: "Sorry, there are no images matching your search query. Please try again!",
       });
@@ -195,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Прокрутити сторінку так, щоб користувач міг побачити нові зображення
     const cardHeight = document.querySelector('.gallery-item')?.getBoundingClientRect().height;
     if (cardHeight) {
-      smoothScrollBy(cardHeight * images.length, 17500);
+      smoothScrollBy(cardHeight * images.length, 5000);
     }
   }
 
