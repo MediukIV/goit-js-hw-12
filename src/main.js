@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPage = 1;
 
   // Масив для збереження данних введених в Imput форми
-  let arr = [];
+  let searchTerms = [];
 
   // Обробник події для форми пошуку
   form.addEventListener("submit", async (event) => {
@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Отримання терміну пошуку та пушимо в масив
     const searchTerm = searchInput.value.trim();
-    arr = [];
-    arr.push(searchTerm);
+    searchTerms = [];
+    searchTerms.push(searchTerm);
 
     if (searchTerm === "") {
       // Виведення помилки, якщо термін пошуку порожній
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadButton.classList.add("hidden");
     // Збільшити поточну сторінку та отримати додаткові дані
     currentPage++;
-    fetchData(arr, currentPage);
+    fetchData(searchTerms, currentPage);
   });
 
   // Функція для отримання та відображення даних
@@ -196,7 +196,8 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
 
     // Додати HTML для зображень в галерею
-    gallery.innerHTML += galleryHTML;
+    gallery.insertAdjacentHTML(`beforeend`, galleryHTML);
+    // gallery.innerHTML += galleryHTML;
 
     // Оновити lightbox після додавання нових зображень
     lightbox.refresh();
